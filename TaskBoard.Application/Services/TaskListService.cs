@@ -16,7 +16,6 @@ namespace TaskBoard.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-
         public IEnumerable<TaskListDTO> GetAllTaskLists()
         {
             var taskLists = _unitOfWork.TaskLists.GetAllAsync().Result;

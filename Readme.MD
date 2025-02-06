@@ -21,8 +21,7 @@ Git and Docker [Desktop] are needed for versioning and local testing of the cont
 Docker is not needed for development per se (i.e., the user can run the app on their local
 machine for testing).
 
-How to check the SQLite database? I would recommend DB Browser. Or use a more mature
-database.
+How to check the SQLite database? I would recommend DB Browser, add database by adding the .db-file. I should use a more mature database anyhow for further development.
 
 ## Set up the Environment
 
@@ -42,6 +41,8 @@ ADDENDUM: When testing docker locally (see below for persistent database with SQ
 - check running containers with "docker ps"
 --> there is a hot reload for .net 8: use Dockerfile.dev and "dotnet watch": [NOT IMPLEMENTED YET!]
 
+# Run the Test(s):
+- run from main directory "dotnet test ./TaskBoard.Tests/TaskBoard.Tests.csproj"
 
 ## Application Background
 
