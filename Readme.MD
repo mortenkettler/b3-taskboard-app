@@ -8,7 +8,7 @@ IMPLEMENTED:
 5. As a user, I can delete a task from a list
 6. As a user, I can delete an entire list with all its tasks
 
-NOT IMPLEMENTED YET:
+NOT IMPLEMENTED YET: <br>
 7. As a user, I can move tasks to a different list (not implemented)
 
 ## Requirements for Onboarding
