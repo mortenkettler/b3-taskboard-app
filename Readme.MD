@@ -7,13 +7,15 @@ IMPLEMENTED:
 4. As a user, I can update the name and description of a tasks within a list
 5. As a user, I can delete a task from a list
 6. As a user, I can delete an entire list with all its tasks
+
 NOT IMPLEMENTED YET:
 7. As a user, I can move tasks to a different list (not implemented)
 
 ## Requirements for Onboarding
 
-The user needs to have installed .Net 8 SDK, an IDE (VS Code [recommend]
+The user needs to have installed .Net 8 SDK, an IDE (VS Code [recommended]
 or VS2022 [not tested]).
+
 Sometimes projects are not directly compatible between VSC and VS2022. I actually dont know why.
 Git and Docker [Desktop] are needed for versioning and local testing of the container.
 Docker is not needed for development per se (i.e., the user can run the app on their local
@@ -27,10 +29,10 @@ database.
 - Clone the repository
 - Run "dotnet restore"
 - Install EF Core "dotnet tool install --global dotnet-ef --version 8.*"
-- Run initial migrations and update the database:
-  "dotnet ef migrations add InitialCreate --project TaskBoard.Infrastructure --startup-project TaskBoard.Api"
-  - (Remove Migrations from Infrastructure.Migrations if error message occurs)
-  "dotnet ef database update --project TaskBoard.Infrastructure --startup-project TaskBoard.Api"
+- Should not be necessary as we distribute the Migrations: 
+  * Run initial migrations and update the database:
+  * "dotnet ef migrations add InitialCreate --project TaskBoard.Infrastructure --startup-project TaskBoard.Api"
+- "dotnet ef database update --project TaskBoard.Infrastructure --startup-project TaskBoard.Api"
 - RUn the application via "dotnet run --project TaskBoard.Api"
 
 ADDENDUM: When testing docker locally (see below for persistent database with SQLite)
@@ -38,7 +40,7 @@ ADDENDUM: When testing docker locally (see below for persistent database with SQ
 - run "docker build -t taskboard:latest ." to build the image 
 - run "docker run -d -p 5000:80 --name taskboard_container taskboard:latest" to start the container
 - check running containers with "docker ps"
---> there is a hot reload for .net 8: use Dockerfile.dev and "dotnet watch":
+--> there is a hot reload for .net 8: use Dockerfile.dev and "dotnet watch": [NOT IMPLEMENTED YET!]
 
 
 ## Application Background
@@ -48,11 +50,11 @@ could be built. It is to be run in a docker container, locally for demonstration
 purposes.
 Domain-driven design shall ensure that there is appropraite separation of concerns,
 with:
-#Domain Layer# responsible for entities that are independently defined.
-#Application Layer# takes ccare of service interfaces and DTOs. Why DTOs? We do not
+- Domain Layer responsible for entities that are independently defined.
+- Application Layer takes ccare of service interfaces and DTOs. Why DTOs? We do not
 need to send around the whole entity, with internal data (i.e., IDs and other data).
-#Infrastructure Layer# handles communication with database via EF Core.
-#API Layer# exposes the endpoints to the user and deals with HTTP requests. Here, we also
+- Infrastructure Layer handles communication with database via EF Core.
+- API Layer# exposes the endpoints to the user and deals with HTTP requests. Here, we also
 store info on appsettings, and the SQLite databse as a .db-file.
 
 # Change Database:

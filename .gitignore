@@ -15,7 +15,7 @@ build/
 artifacts/
 
 # db files
-*.db
+*.db*
 
 # NuGet packages
 *.nupkg
