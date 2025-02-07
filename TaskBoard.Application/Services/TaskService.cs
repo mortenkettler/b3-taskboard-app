@@ -18,6 +18,7 @@ namespace TaskBoard.Application.Services
 
         public IEnumerable<TaskDTO> GetAllTasks()
         {
+            // use await
             var tasks = _unitOfWork.Tasks.GetAllAsync().Result;
             return tasks.Select(t => new TaskDTO
             {

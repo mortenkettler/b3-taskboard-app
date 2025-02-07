@@ -25,6 +25,8 @@ var app = builder.Build();
 
 // required to use the Migrations in Docker
 // anything that can go wrong?
+// yes, should be done outside of the container for example
+// only left for the SQLite in Docker
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
